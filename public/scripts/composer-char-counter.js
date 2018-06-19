@@ -9,7 +9,7 @@ $(document).ready(function(){
       }
     }else{
       if(counter.hasClass("over-char-limit")){
-        counter.removeClass("over-char-limit")
+        counter.removeClass("over-char-limit");
       }
     }
   })

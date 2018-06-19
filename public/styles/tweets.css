@@ -18,7 +18,7 @@
 }
 
 .tweet header{
-  line-height:100%;
+  position:relative;
   padding:0.5em;
   background-color:#eeeeee;
   transition:background-color 1s;
@@ -32,9 +32,15 @@
   border:1px solid #bbbbbb;
 
 }
+.tweet header div{
+  display:inline-block;
+  margin-left:0.3em;
+  position:absolute;
+  top:0.3em;
+}
 
 .tweet h2{
-  margin:10px;
+  margin:0;
   color:#696969;
   vertical-align:top;
   display:inline-block;
@@ -42,11 +48,8 @@
 }
 
 .tweet h4{
-  margin:10px;
-  float:right;
+  margin:0;
   color:#a6a6a6;
-  vertical-align:bottom;
-  display:inline-block;
   transition:color 1s;
 }
 

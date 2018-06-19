@@ -4,9 +4,13 @@ $(document).ready(function(){
     let counter = $(this).siblings(".counter");
     counter.text(charsLeft);
     if(charsLeft < 0){
-      counter.css("color", "red");
+      if(! counter.hasClass("over-char-limit")){
+        counter.addClass("over-char-limit");
+      }
     }else{
-      counter.css("color", "black")
+      if(counter.hasClass("over-char-limit")){
+        counter.removeClass("over-char-limit")
+      }
     }
   })
 });

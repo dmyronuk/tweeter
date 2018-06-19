@@ -27,3 +27,7 @@
   float:right;
   font-size:0.75em;
 }
+
+.over-char-limit{
+  color:red;
+}

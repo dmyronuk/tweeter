@@ -23,6 +23,7 @@ body {
 
 .container{
   width:450px;
+  min-height:100vh;
   margin:auto;
   padding-top:80px;
   background-color:white;

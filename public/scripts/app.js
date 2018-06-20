@@ -48,7 +48,7 @@ function createTweetElement(data){
 function renderTweets(dataArr){
   dataArr.forEach(elem => {
     var $tweet = $(createTweetElement(elem));
-    $('#prev-tweets').append($tweet);
+    $('#prev-tweets').prepend($tweet);
   })
 };
 
@@ -56,9 +56,9 @@ function newTweetSubmitHandler(event){
   event.preventDefault();
   let $form = $(event.target).parent();
   let $textarea = $form.find("textarea");
-  let text = $textarea.val();
+  let text = $textarea.val().trim();
   let errMsg;
-  if(text.length === 0){
+  if(!text){
     errMsg = "Please enter some text"
   }else if(text.length > 140){
     errMsg = "Character limit exceeded"
@@ -72,10 +72,8 @@ function newTweetSubmitHandler(event){
       url: "/tweets",
       data: $form.serialize(),
       method: "POST",
-      success: function(resData){
-        console.log("success");
-        $textarea.val("");
-        $("#new-tweet-error").text("");
+      success: function(){
+        loadTweets();
       }
     })
   }

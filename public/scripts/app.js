@@ -15,6 +15,12 @@ function loadTweets(){
   })
 };
 
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 function createTweetElement(data){
   let user = data.user;
   let content = data.content;
@@ -27,12 +33,12 @@ function createTweetElement(data){
         <header>
           <img class="profile-img" src="${user.avatars.small}"/>
           <div>
-            <h2>${user.name}</h2>
-            <h4>${user.handle}</h4>
+            <h2>${escape(user.name)}</h2>
+            <h4>${escape(user.handle)}</h4>
           </div>
         </header>
         <div>
-          <section>${content.text}</section>
+          <section>${escape(content.text)}</section>
         </div>
         <footer>
           ${timeElapsedString}

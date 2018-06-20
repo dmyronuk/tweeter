@@ -2,16 +2,19 @@
   color:red;
   width:100%;
   text-align:center;
-  height:30px;
-  margin-top:10px;
+  height:0px;
+  position:absolute;
+  top:-1.5em;
 }
 
 .new-tweet{
   padding:0.5em;
-  margin:0em 2em 2em 2em;
+  margin:2em 2em 2em 2em;
   background-color:#eeeeee;
   border:1px solid #bbbbbb;
   border-radius:5px;
+  display:none;
+  position:relative;
 }
 
 .new-tweet h2{

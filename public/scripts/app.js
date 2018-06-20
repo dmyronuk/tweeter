@@ -70,10 +70,12 @@ function newTweetSubmitHandler(event){
     errMsg = "Character limit exceeded"
   }
 
+  let $newTweetError = $("#new-tweet-error");
   if(errMsg){
-    $("#new-tweet-error").text(errMsg);
+    $newTweetError.text(errMsg);
   }else{
     //clear textarea and error message
+    $newTweetError.text("");
     $.ajax({
       url: "/tweets",
       data: $form.serialize(),
@@ -85,9 +87,14 @@ function newTweetSubmitHandler(event){
   }
 };
 
+function displayNewTweetHandler(){
+  let $newTweet = $(".new-tweet");
+  $newTweet.slideToggle();
+  $newTweet.find("textarea").focus();
+}
+
 $(document).ready(function(){
   loadTweets();
   $(".new-tweet").find("input").on("click", newTweetSubmitHandler);
+  $("#display-new-tweet").on("click", displayNewTweetHandler);
 });
-
-

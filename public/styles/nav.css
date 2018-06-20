@@ -4,20 +4,51 @@
   height:80px;
   color:#e8fdff;
   background-color:#00a087;
-  width:100vw;
+  width:100%;
   padding:0px 2em 0px 2em;
   z-index:1000;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
 }
 
 #nav-bar .logo{
   height:80px;
   width:80px;
-  float:left;
   margin-right:10px
 }
 
 #nav-bar .header{
-  float:left;
   line-height:80px;
   font-size:2em
+}
+
+#display-new-tweet{
+  margin-left: auto;
+  display:flex;
+  align-items:center;
+  height:calc(80px - 1em);
+  border:1px solid black;
+  background:white;
+  border-radius:5px;
+  color:#808080;
+  flex-direction:row;
+}
+
+#display-new-tweet:hover div{
+  color:black
+}
+
+#display-new-tweet:hover img{
+  opacity:1;
+}
+
+#display-new-tweet div{
+  font-size:1.3em;
+}
+
+#display-new-tweet img{
+  opacity:0.5;
+  height:30px;
 }

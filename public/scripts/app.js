@@ -89,6 +89,26 @@ function renderTweets(dataArr){
   })
 };
 
+function newTweetSubmitHandler(event){
+  console.log("running")
+  event.preventDefault();
+  let $target = $(event.target);
+  let $form = $target.parent();
+  $.ajax({
+    url: "/tweets",
+    data: $form.serialize(),
+    method: "POST",
+    success: function(resData){
+      console.log("success")
+      var $tweet = $(createTweetElement(data[0]));
+      $('#prev-tweets').append($tweet);
+    }
+  })
+};
+
 $(document).ready(function(){
   renderTweets(data);
+  $(".new-tweet").find("input").on("click", newTweetSubmitHandler)
 });
+
+

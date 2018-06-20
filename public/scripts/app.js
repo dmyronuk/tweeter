@@ -53,18 +53,32 @@ function renderTweets(dataArr){
 };
 
 function newTweetSubmitHandler(event){
-  console.log("running")
   event.preventDefault();
-  let $target = $(event.target);
-  let $form = $target.parent();
-  $.ajax({
-    url: "/tweets",
-    data: $form.serialize(),
-    method: "POST",
-    success: function(resData){
-      console.log("success");
-    }
-  })
+  let $form = $(event.target).parent();
+  let $textarea = $form.find("textarea");
+  let text = $textarea.val();
+  let errMsg;
+  if(text.length === 0){
+    errMsg = "Please enter some text"
+  }else if(text.length > 140){
+    errMsg = "Character limit exceeded"
+  }
+
+  if(errMsg){
+    $("#new-tweet-error").text(errMsg);
+  }else{
+    //clear textarea and error message
+    $.ajax({
+      url: "/tweets",
+      data: $form.serialize(),
+      method: "POST",
+      success: function(resData){
+        console.log("success");
+        $textarea.val("");
+        $("#new-tweet-error").text("");
+      }
+    })
+  }
 };
 
 $(document).ready(function(){

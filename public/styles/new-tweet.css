@@ -1,6 +1,14 @@
+#new-tweet-error{
+  color:red;
+  width:100%;
+  text-align:center;
+  height:30px;
+  margin-top:10px;
+}
+
 .new-tweet{
   padding:0.5em;
-  margin:2em;
+  margin:0em 2em 2em 2em;
   background-color:#eeeeee;
   border:1px solid #bbbbbb;
   border-radius:5px;

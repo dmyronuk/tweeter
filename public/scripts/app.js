@@ -32,9 +32,13 @@ function createTweetElement(data){
       <article class="tweet">
         <header>
           <img class="profile-img" src="${user.avatars.small}"/>
-          <div>
-            <h2>${escape(user.name)}</h2>
-            <h4>${escape(user.handle)}</h4>
+          <div class="tweet-headings-container">
+            <div>
+              <h2>${escape(user.name)}</h2>
+            </div>
+            <div class="user-handle">
+              <h4>${escape(user.handle)}</h4>
+            </div>
           </div>
         </header>
         <div>

@@ -22,6 +22,9 @@
   padding:0.5em;
   background-color:#eeeeee;
   transition:background-color 1s;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
 }
 
 .profile-img{
@@ -30,27 +33,36 @@
   width:70px;
   border-radius:10px;
   border:1px solid #bbbbbb;
-
 }
-.tweet header div{
-  display:inline-block;
+
+.tweet-headings-container{
+  flex-grow:1;
   margin-left:0.3em;
-  position:absolute;
-  top:0.3em;
+  vertical-align:middle
+  height:70px;
+  display:flex;
+  flex-direction:row;
+  align-content:flex-end;
+  position:relative;
+}
+
+.user-handle{
+  margin-left:auto;
 }
 
 .tweet h2{
   margin:0;
   color:#696969;
-  vertical-align:top;
-  display:inline-block;
   transition:color 1s;
+  font-size:20px;
 }
 
 .tweet h4{
   margin:0;
+  line-height:20px;
   color:#a6a6a6;
   transition:color 1s;
+  vertical-align:bottom;
 }
 
 .tweet section{

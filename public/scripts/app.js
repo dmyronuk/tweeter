@@ -79,12 +79,14 @@ function newTweetSubmitHandler(event){
     $newTweetError.text(errMsg);
   }else{
     //clear textarea and error message
-    $newTweetError.text("");
     $.ajax({
       url: "/tweets",
       data: $form.serialize(),
       method: "POST",
       success: function(){
+        $newTweetError.text("");
+        $textarea.val("");
+        $textarea.siblings(".counter").text("140");
         loadTweets();
       }
     })

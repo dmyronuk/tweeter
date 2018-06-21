@@ -19,7 +19,7 @@ function escape(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
-}
+};
 
 function createTweetElement(data){
   let user = data.user;
@@ -69,9 +69,9 @@ function newTweetSubmitHandler(event){
   let text = $textarea.val().trim();
   let errMsg;
   if(!text){
-    errMsg = "Please enter some text"
+    errMsg = "Please enter some text";
   }else if(text.length > 140){
-    errMsg = "Character limit exceeded"
+    errMsg = "Character limit exceeded";
   }
 
   let $newTweetError = $("#new-tweet-error");
@@ -95,7 +95,7 @@ function displayNewTweetHandler(){
   let $newTweet = $(".new-tweet");
   $newTweet.slideToggle();
   $newTweet.find("textarea").focus();
-}
+};
 
 $(document).ready(function(){
   loadTweets();

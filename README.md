@@ -4,8 +4,8 @@
 Tweeter is a simple, single-page Twitter clone.  This is a practice project built on top of Lighthouse Labs boilerplace using HTML, CSS, JS, jQuery, Express and MongoDB.
 
 ## Screenshots
-!["Screenshot of compose tweet box"](https://github.com/dmyronuk/tweeter/tree/master/screenshots/tweeter-1.png)
-!["Screenshot of tweet hover state"](https://github.com/dmyronuk/tweeter/tree/master/screenshots/tweeter-2.png)
+!["Compose Tweet"](https://raw.githubusercontent.com/dmyronuk/tweeter/master/screenshots/tweeter-1.png)
+!["Tweet Hover"](https://raw.githubusercontent.com/dmyronuk/tweeter/master/screenshots/tweeter-2.png)
 
 ## Dependencies
 - Express

@@ -21,12 +21,41 @@ function escape(str) {
   return div.innerHTML;
 };
 
+//takes a time int and return a string for display in html
+function formatTimeElapsed(created_at){
+  let curDate = new Date();
+  let createdDate = new Date(created_at);
+
+  let yearsElapsed = curDate.getFullYear() - createdDate.getFullYear();
+  let monthsElapsed = curDate.getMonth() - createdDate.getMonth();
+  let daysElapsed = curDate.getDay() - createdDate.getDay();
+  let minutesElapsed = curDate.getMinutes() - createdDate.getMinutes();
+
+  let testArr = [[yearsElapsed, "year"], [monthsElapsed, "month"], [daysElapsed, "day"], [minutesElapsed, "minute"]];
+  let i = 0;
+  let outElem;
+  //if tweet happened a year ago return 1 year ago instead of x months ago, x days ago etc
+  while(i < testArr.length && !outElem){
+    if(testArr[i][0] > 0){
+      outElem = testArr[i];
+    }
+    i++;
+  }
+
+  //if first array search turns up empty, the tweet is less than a minute old, therefore 'just now'
+  if(! outElem){
+    return "Just now";
+  }else{
+    let suffix = outElem[0] === 1 ? "" : "s";
+    return `${outElem[0]} ${outElem[1]}${suffix} ago`;
+  }
+};
+
 function createTweetElement(data){
   let user = data.user;
   let content = data.content;
-  let curTime = new Date();
-  let daysElapsed = (curTime.getTime() - data.created_at) / (60 ** 2 * 24);
-  let timeElapsedString = Math.round(daysElapsed) + " days ago";
+  let timeElapsedString = formatTimeElapsed(data.created_at);
+  // let timeElapsedString = Math.round(daysElapsed) + " days ago";
   return `
     <section id="prev-tweets">
       <article class="tweet">

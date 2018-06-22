@@ -29,9 +29,10 @@ function formatTimeElapsed(created_at){
   let yearsElapsed = curDate.getFullYear() - createdDate.getFullYear();
   let monthsElapsed = curDate.getMonth() - createdDate.getMonth();
   let daysElapsed = curDate.getDay() - createdDate.getDay();
-  let minutesElapsed = curDate.getMinutes() - createdDate.getMinutes();
+  let hoursElapsed = curDate.getHours() - createdDate.getHours();
+  let minutesElapsed = new Date(curDate.getTime() - created_at).getMinutes();
 
-  let testArr = [[yearsElapsed, "year"], [monthsElapsed, "month"], [daysElapsed, "day"], [minutesElapsed, "minute"]];
+  let testArr = [[yearsElapsed, "year"],[monthsElapsed, "month"],[daysElapsed, "day"]]
   let i = 0;
   let outElem;
   //if tweet happened a year ago return 1 year ago instead of x months ago, x days ago etc
@@ -42,10 +43,20 @@ function formatTimeElapsed(created_at){
     i++;
   }
 
-  //if first array search turns up empty, the tweet is less than a minute old, therefore 'just now'
+  //if first array search turns up empty
   if(! outElem){
-    return "Just now";
+    if(minutesElapsed > 60){
+      outElem = [hoursElapsed, "hour"];
+    }else if(minutesElapsed >= 1){
+      outElem = [minutesElapsed, "minute"];
+    }
+  }
+
+  //if we still don't have an outElem the tweet is less than a minute old
+  if(! outElem){
+    return "just now";
   }else{
+    //add and s so minute becomes minutes
     let suffix = outElem[0] === 1 ? "" : "s";
     return `${outElem[0]} ${outElem[1]}${suffix} ago`;
   }

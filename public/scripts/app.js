@@ -30,7 +30,6 @@ function formatTimeElapsed(created_at){
   let monthsElapsed = curDate.getMonth() - createdDate.getMonth();
   let daysElapsed = curDate.getDay() - createdDate.getDay();
   let hoursElapsed = curDate.getHours() - createdDate.getHours();
-  let minutesElapsed = new Date(curDate.getTime() - created_at).getMinutes();
 
   let testArr = [[yearsElapsed, "year"],[monthsElapsed, "month"],[daysElapsed, "day"]]
   let i = 0;
@@ -42,13 +41,14 @@ function formatTimeElapsed(created_at){
     }
     i++;
   }
-
   //if first array search turns up empty
   if(! outElem){
-    if(minutesElapsed > 60){
-      outElem = [hoursElapsed, "hour"];
-    }else if(minutesElapsed >= 1){
-      outElem = [minutesElapsed, "minute"];
+    let diffMinutes = (curDate.getTime() - createdDate.getTime()) / (1000 * 60);
+
+    if(diffMinutes > 60){
+      outElem = [Math.round(diffMinutes/60), "hour"];
+    }else if(diffMinutes >= 1){
+      outElem = [Math.round(diffMinutes), "minute"];
     }
   }
 

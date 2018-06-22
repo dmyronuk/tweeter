@@ -12,6 +12,8 @@ Tweeter is a simple, single-page Twitter clone.  This is a practice project buil
 - Chance
 - MongoDB
 - Node 5.10.x or above
+- node-sass-middleware
+
 
 ## Getting Started
 - ```npm install```

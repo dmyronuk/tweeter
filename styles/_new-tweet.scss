@@ -15,23 +15,23 @@
   border-radius:5px;
   display:none;
   position:relative;
-}
 
-.new-tweet h2{
-  border-bottom:1px solid black;
-  margin:0em 0em 0.5em 0em
-}
+  h2{
+    border-bottom:1px solid black;
+    margin:0em 0em 0.5em 0em
+  }
 
-.new-tweet textarea{
-  width:100%;
-  margin-bottom:0.3em;
-  padding:0.3em;
-}
+  textarea{
+    width:100%;
+    margin-bottom:0.3em;
+    padding:0.3em;
+  }
 
-.new-tweet input{
-  border: 1px solid #bbbbbb;
-  padding:0em 0.5em 0em 0.5em;
-  background:linear-gradient(#dddddd, white);
+  input{
+    border: 1px solid #bbbbbb;
+    padding:0em 0.5em 0em 0.5em;
+    background:linear-gradient(#dddddd, white);
+  }
 }
 
 .counter{

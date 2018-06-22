@@ -14,7 +14,6 @@ app.use(nodeSassMiddleware({
     dest: path.join(__dirname, '../public'),
     debug: true,
     outputStyle: 'compressed',
-    //log: function(severity, key, value){console.log(severity, "node-sass-middleware", key, value)}
 }));
 
 app.use(express.static(path.join(__dirname, '../public')));

@@ -3,28 +3,64 @@
   border:1px solid #bbbbbb;
   border-radius:5px;
   overflow:hidden;
-}
+  transition:box-shadow 1s;
 
-.tweet:hover header{
-  background-color:#5bc0de;
-}
+  header{
+    position:relative;
+    padding:0.5em;
+    background-color:#eeeeee;
+    transition:background-color 1s;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+  }
 
-.tweet:hover h2{
-  color:black;
-}
+  h2{
+    margin:0;
+    color:#696969;
+    transition:color 1s;
+    font-size:20px;
+  }
 
-.tweet:hover h4{
-  color:black;
-}
+  h4{
+    margin:0;
+    line-height:20px;
+    color:#a6a6a6;
+    transition:color 1s;
+    vertical-align:bottom;
+  }
 
-.tweet header{
-  position:relative;
-  padding:0.5em;
-  background-color:#eeeeee;
-  transition:background-color 1s;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
+  section{
+    color:#313131;
+    padding:2em;
+    vertical-align:middle;
+  }
+
+  footer{
+    background:white;
+    font-size:0.8em;
+    border-top:1px solid #dddddd;
+    height:30px;
+    line-height:30px;
+    padding:0 0.5em 0 0.5em;
+    vertical-align:middle;
+  }
+
+  &:hover {
+    box-shadow:-3px 3px 3px #aaaaaa;
+  }
+
+  &:hover header{
+    background-color:#8ed0f8;
+  }
+
+  &:hover h2{
+    color:black;
+  }
+
+  &:hover h4{
+    color:black;
+  }
 }
 
 .profile-img{
@@ -50,45 +86,14 @@
   margin-left:auto;
 }
 
-.tweet h2{
-  margin:0;
-  color:#696969;
-  transition:color 1s;
-  font-size:20px;
-}
-
-.tweet h4{
-  margin:0;
-  line-height:20px;
-  color:#a6a6a6;
-  transition:color 1s;
-  vertical-align:bottom;
-}
-
-.tweet section{
-  color:#313131;
-  padding:2em;
-  vertical-align:middle;
-}
-
-.tweet footer{
-  background:white;
-  font-size:0.8em;
-  border-top:1px solid #dddddd;
-  height:30px;
-  line-height:30px;
-  padding:0 0.5em 0 0.5em;
-  vertical-align:middle;
-}
-
 .tweet-footer-img {
   height:30px;
   width:30px;
   float:right;
   opacity:0.3;
   transition:opacity 1s;
-}
 
-.tweet-footer-img:hover {
-  opacity:0.6
+  &:hover{
+    opacity:0.6
+  }
 }

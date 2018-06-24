@@ -27,41 +27,28 @@ function escape(str) {
 function formatTimeElapsed(created_at){
   let curDate = new Date();
   let createdDate = new Date(created_at);
+  let diffMinutes = (curDate.getTime() - createdDate.getTime()) / (1000 * 60);
+  let diffHours = diffMinutes / 60;
+  let diffDays = diffHours / 24;
+  let diffMonths = diffDays / 365 * 12;
 
-  let yearsElapsed = curDate.getFullYear() - createdDate.getFullYear();
-  let monthsElapsed = curDate.getMonth() - createdDate.getMonth();
-  let daysElapsed = curDate.getDay() - createdDate.getDay();
-  let hoursElapsed = curDate.getHours() - createdDate.getHours();
-
-  let testArr = [[yearsElapsed, "year"],[monthsElapsed, "month"],[daysElapsed, "day"]]
-  let i = 0;
-  let outElem;
-  //if tweet happened a year ago return 1 year ago instead of x months ago, x days ago etc
-  while(i < testArr.length && !outElem){
-    if(testArr[i][0] > 0){
-      outElem = testArr[i];
-    }
-    i++;
-  }
-  //if first array search turns up empty
-  if(! outElem){
-    let diffMinutes = (curDate.getTime() - createdDate.getTime()) / (1000 * 60);
-
-    if(diffMinutes > 60){
-      outElem = [Math.round(diffMinutes/60), "hour"];
-    }else if(diffMinutes >= 1){
-      outElem = [Math.round(diffMinutes), "minute"];
-    }
-  }
-
-  //if we still don't have an outElem the tweet is less than a minute old
-  if(! outElem){
+  if(diffMinutes < 1){
     return "just now";
-  }else{
-    //add and s so minute becomes minutes
-    let suffix = outElem[0] === 1 ? "" : "s";
-    return `${outElem[0]} ${outElem[1]}${suffix} ago`;
+  }else if(diffMinutes > 0 && diffMinutes < 60){
+    outElem = [Math.round(diffMinutes), "minute"];
+  }else if (diffHours < 24){
+    outElem = [Math.round(diffHours), "hour"];
+  }else if (diffDays < 31){
+    outElem = [Math.round(diffDays), "day"];
+  }else if (diffMonths < 12){
+    outElem = [Math.round(diffMonths), "month"];
+  }else if (diffMonths > 12){
+    let yearsElapsed = curDate.getFullYear() - createdDate.getFullYear();
+    outElem = [yearsElapsed, "year"];
   }
+
+  let suffix = outElem[0] === 1 ? "" : "s";
+  return `${outElem[0]} ${outElem[1]}${suffix} ago`;
 };
 
 function createTweetElement(data){

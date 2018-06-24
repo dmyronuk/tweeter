@@ -43,8 +43,8 @@ function formatTimeElapsed(created_at){
   }else if (diffMonths < 12){
     outElem = [Math.round(diffMonths), "month"];
   }else if (diffMonths > 12){
-    let yearsElapsed = curDate.getFullYear() - createdDate.getFullYear();
-    outElem = [yearsElapsed, "year"];
+    let diffYears = Math.round(diffDays / 365.25);
+    outElem = [diffYears, "year"];
   }
 
   let suffix = outElem[0] === 1 ? "" : "s";

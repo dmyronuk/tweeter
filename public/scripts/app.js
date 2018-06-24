@@ -4,13 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-function loadTweets(){
+function loadTweets(newestIndex, oldestIndex){
   $.ajax({
     url: "/tweets",
     dataType: "json",
     method: "GET",
     success: function(data){
-      renderTweets(data);
+      if(newestIndex === undefined) newestIndex = 0;
+      if(oldestIndex === undefined) oldestIndex = data.length - 1;
+      renderTweets(data, newestIndex, oldestIndex);
     }
   })
 };
@@ -95,11 +97,15 @@ function createTweetElement(data){
   `
 };
 
-function renderTweets(dataArr){
-  dataArr.forEach(elem => {
-    var $tweet = $(createTweetElement(elem));
+function renderTweets(dataArr, newestIndex, oldestIndex){
+  /* Array is sorted from newest at index 0 to oldest at index arr.length - 1
+  We're going to start with the post at oldestIndex, prepend it to the container
+  and work backwords towards the post at newestIndex
+  */
+  for(let i = oldestIndex; i >= newestIndex; i--){
+    var $tweet = $(createTweetElement(dataArr[i]));
     $('#prev-tweets').prepend($tweet);
-  })
+  }
 };
 
 function newTweetSubmitHandler(event){
@@ -127,7 +133,7 @@ function newTweetSubmitHandler(event){
         $newTweetError.text("");
         $textarea.val("");
         $textarea.siblings(".counter").text("140");
-        loadTweets();
+        loadTweets(0, 0);
       }
     })
   }
